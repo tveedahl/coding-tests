@@ -14,6 +14,7 @@ patList = [zero, one, two, three, four, five, six, seven, eight, nine]
 # Get number input from user
 numput = input("Enter a nonzero number:")
 
-# Loop through numput and print display format
+# Loop through numput and append patterns
+outList = []
 for digit in numput:
     print(patList[int(digit)])
