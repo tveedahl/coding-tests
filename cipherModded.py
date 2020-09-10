@@ -22,6 +22,6 @@ try:
                 cipher = cipher + chr((ord(i) + userShiftVal - 97) % 26 + 97)
         print(cipher)
     else:
-        sys.exit("Entered value is not in range. Goodbye")
-except ValueError:
-    sys.exit("The value you entered is not valid")
+        print("Value is not between 1 and 25. Goodbye")
+except ValueError as e:
+    print("Value is not an integer between 1 and 25")
