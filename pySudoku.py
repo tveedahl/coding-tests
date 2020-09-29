@@ -3,7 +3,6 @@ import sys
 # Prompt user to enter completed sudoku and create 2 copies
 print("Enter a 9 x 9 completed sudoku puzzle to check for its correctness (Press Ctrl-D when done): ")
 sudokuList = sys.stdin.readlines()
-print(sudokuList)
 sudokuListTwo = sudokuList
 sudokuListThree = sudokuList
 
@@ -13,7 +12,7 @@ for element in sudokuList:
     sudokuList[sudokuListCount] = int(sudokuList[sudokuListCount])
     sudokuListCount += 1
 
-# Iterate through and validate sudokuList for correctness
+# Iterate through and validate sudokuList rows for correctness
 sudokuIntList = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 for iterOne in sudokuList:
     # Cast row ints to lists
@@ -24,10 +23,30 @@ for iterOne in sudokuList:
     else:
         sys.exit("The sudoku puzzle you entered is not correct. Goodbye")
 
-# Iterate through sudokuList columns
-"""for iterTwo in sudokuListTwo:
-    for column in iterTwo:
-        print(column)"""
+# Iterate through and validate sudokuListTwo columns for correctness
+for iterTwo in sudokuListTwo:
+    # Cast row ints to lists
+    columnList = list(map(int, str(iterTwo)))
+    for column in columnList:
+        # Check if numbers 1-9 are in user entered rows
+        if all(item in sudokuIntList for item in columnList):
+            pass
+        else:
+            sys.exit("The sudoku puzzle you entered is not correct. Goodbye")
+
+# Iterate through and validate sudokuListThree 3 x 3 tiles for correctness
+tileCount = 0
+threeByThree = []
+for tileRow in sudokuListThree:
+    # Cast row ints to lists
+    tileList = list(map(int, str(tileRow)))
+    tileColList = []
+    for tileCol in tileList[0:3]:
+        tileColList.append(tileCol)
+    threeByThree.append([tileList[0:3], tileColList[1:3]])
+    print(threeByThree)
+
 
 # Print sudokuList validation report
-# print("All rows of your entered sudoku puzzle contain numbers 1-9")
+# print("All rows of your entered sudoku puzzle contain numbers 1-9\n")
+# print("All columns of your entered sudoku puzzle contain numbers 1-9")
