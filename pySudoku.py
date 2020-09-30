@@ -1,4 +1,5 @@
 import sys
+import numpy
 
 # Prompt user to enter completed sudoku and create 2 copies
 print("Enter a 9 x 9 completed sudoku puzzle to check for its correctness (Press Ctrl-D when done): ")
@@ -35,17 +36,22 @@ for iterTwo in sudokuListTwo:
             sys.exit("The sudoku puzzle you entered is not correct. Goodbye")
 
 # Iterate through and validate sudokuListThree 3 x 3 tiles for correctness
-tileCount = 0
-threeByThree = []
+tileCount = 1
+threeByThree = numpy.array([[], [], []])
 for tileRow in sudokuListThree:
     # Cast row ints to lists
     tileList = list(map(int, str(tileRow)))
-    tileColList = []
-    for tileCol in tileList[0:3]:
-        tileColList.append(tileCol)
-    threeByThree.append([tileList[0:3], tileColList[1:3]])
-    print(threeByThree)
-
+    if tileCount < 4:
+        for tileCol in tileList[0:3]:
+            tileColList = numpy.array(tileCol)
+            print(type(tileColList))
+            threeByThree.append([[tileColList[0:3]], [tileColList[3:6]], [tileColList[6:9]]])
+            print(threeByThree)
+    elif 4 <= tileCount < 7:
+        continue
+    elif 7 <= tileCount < 10:
+        continue
+    tileCount += 1
 
 # Print sudokuList validation report
 # print("All rows of your entered sudoku puzzle contain numbers 1-9\n")
