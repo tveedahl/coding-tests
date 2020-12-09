@@ -5,20 +5,12 @@ class FileIo:
 	# Illustrate usage of opening file read stream
 	def readSomeTxt(self):
 		try:
-			ccnt = lcnt = 0
-			s = open('text.txt', 'rt')
-			line = s.readline()
-			while line != '':
-				lcnt += 1
-				for ch in line:
-					print(ch, end='')
-					ccnt += 1
-				line = s.readline()
-			s.close()
-			print("\n\nCharacters in file:", ccnt)
-			print("Lines in file:     ", lcnt)
+			fo = open('newtext.txt', 'wt')
+			for i in range(10):
+				fo.write("line #" + str(i+1) + "\n")
+			fo.close()
 		except IOError as e:
-			print("I/O error occurred:", strerr(e.errno))
+			print("I/O error occurred: ", strerror(e.errno))
 
 # Instantiate fileTester
 fileTester = FileIo()
