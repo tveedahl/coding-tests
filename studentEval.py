@@ -1,17 +1,20 @@
 class StudentsDataException(Exception):
-	pass
+    pass
+
 
 class BadLine(StudentsDataException):
-	pass
+    pass
+
 
 class FileEmpty(StudentsDataException):
-	pass
+    pass
 
-class StudentEval():
+
+class StudentEval:
 
     def readAndSum(self):
         try:
-            global aFileName 
+            global aFileName
             aFileName = input("Enter the name of a text file to get input from: ")
             fileHndl = open(aFileName, 'r')
             studentEvalDict = []
@@ -25,15 +28,17 @@ class StudentEval():
                     lineSplt[1],
                     rplPoints
                 ]
-                #print(student[0], student[1])
-                if student[0] not in studentEvalDict and student[1] not in studentEvalDict:
-                    studentEvalDict.append(student)
-                    if student[0] == studentEvalDict[0][0] and student[1] == studentEvalDict[0][1]:
-                        studentEvalDict[studentCount][2] = studentEvalDict[studentCount][2] + studentEvalDict[studentCount][2]
+                # print(student[0], student[1])
+                studentEvalDict.append(student)
+                print(studentEvalDict[studentCount][0])
+                if student[0] in studentEvalDict[studentCount] and student[1] == studentEvalDict[studentCount]:
+                    print("in")
                 studentCount = studentCount + 1
-                print(studentEvalDict)
+            # print(studentEvalDict)
         except IOError:
             pass
 
+
 impStudentEval = StudentEval()
+
 impStudentEval.readAndSum()
