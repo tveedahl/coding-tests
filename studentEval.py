@@ -24,10 +24,12 @@ class StudentEval():
                     lineSplt[1],
                     rplPoints
                 ]
-                studentEvalDict.append(student)
-                if studentEvalDict.find:
-                    print(student)
-            #print(studentEvalDict)
+                #print(student[0], student[1])
+                if student[0] not in studentEvalDict and student[1] not in studentEvalDict:
+                    studentEvalDict.append(student)
+                else:
+                    print(student[0], student[1])
+            print(studentEvalDict)
         except IOError:
             pass
 
