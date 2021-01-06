@@ -17,9 +17,9 @@ class StudentEval:
             global aFileName
             aFileName = input("Enter the name of a text file to get input from: ")
             fileHndl = open(aFileName, 'r')
-            studentEvalDict = []
+            studentEvalList = []
+            nameList = []
             fileLines = fileHndl.readlines()
-            studentCount = 0
             for line in fileLines:
                 lineSplt = line.split(" ")
                 rplPoints = float(lineSplt[2].replace("\n", ""))
@@ -28,13 +28,17 @@ class StudentEval:
                     lineSplt[1],
                     rplPoints
                 ]
-                # print(student[0], student[1])
-                studentEvalDict.append(student)
-                print(studentEvalDict[studentCount][0])
-                if student[0] in studentEvalDict[studentCount] and student[1] == studentEvalDict[studentCount]:
-                    print("in")
-                studentCount = studentCount + 1
+                names = [
+                    lineSplt[0],
+                    lineSplt[1]
+                ]
+                #studentEvalList.append(student)
+                if names not in nameList:
+                    nameList.append(names)
+                else:
+                    print(names)
             # print(studentEvalDict)
+            # print(nameList)
         except IOError:
             pass
 
