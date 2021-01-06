@@ -32,13 +32,13 @@ class StudentEval:
                     lineSplt[0],
                     lineSplt[1]
                 ]
-                #studentEvalList.append(student)
                 if names not in nameList:
                     nameList.append(names)
+                    studentEvalList.append(student)
                 else:
-                    print(names)
-            # print(studentEvalDict)
-            # print(nameList)
+                    # print(names)
+                    pass
+            # print(studentEvalList)
         except IOError:
             pass
 
