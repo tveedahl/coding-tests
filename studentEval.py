@@ -45,8 +45,11 @@ class StudentEval:
                     ]
                     if lineSplt[0] not in studentEvalList:
                         studentEvalList.append(student)
-                    count += 1
-            print(studentEvalList)
+                    count += 1     
+            counter = 0
+            while counter < len(studentEvalList):
+                print(studentEvalList[counter][0], studentEvalList[counter][1], studentEvalList[counter][2])
+                counter += 1
         except IOError:
             print("No file by that name exists in your current directory")
 
