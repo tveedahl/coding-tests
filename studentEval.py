@@ -24,7 +24,7 @@ class StudentEval:
             for line in fileLines:
                 lineSplt = line.split(" ")
                 rplPoints = float(lineSplt[2].replace("\n", ""))
-                student = [
+                studentIntl = [
                     lineSplt[0],
                     lineSplt[1],
                     rplPoints
@@ -35,21 +35,22 @@ class StudentEval:
                 ]
                 if names not in nameList:
                     nameList.append(names)
-                    studentEvalList.append(student)
+                    studentEvalList.append(studentIntl)
                 else:
                     stuEvalSum = rplPoints + studentEvalList[count][2]
-                    student = [
+                    studentSummed = [
                         lineSplt[0],
                         lineSplt[1],
                         stuEvalSum
                     ]
                     if lineSplt[0] not in studentEvalList:
-                        studentEvalList.append(student)
-                    count += 1     
-            counter = 0
-            while counter < len(studentEvalList):
-                print(studentEvalList[counter][0], studentEvalList[counter][1], studentEvalList[counter][2])
-                counter += 1
+                        studentEvalList.append(studentSummed)
+                        # studentEvalList.pop(count)
+                    count += 1
+            stuCount = 0
+            while stuCount < len(studentEvalList):
+                print(studentEvalList[stuCount][0], studentEvalList[stuCount][1], studentEvalList[stuCount][2])
+                stuCount += 1
         except IOError:
             print("No file by that name exists in your current directory")
 
