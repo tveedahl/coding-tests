@@ -47,8 +47,10 @@ class StudentEval:
                             "points": stuEvalSum
                         }
                     }
+                    for k, v in stuEvalSummed.items():
+                        print(k, v)
                     count += 1
-            print(stuEvalSummed)
+            # print(stuEvalSummed)
         except IOError:
             print("No file by that name exists in your current directory")
 
