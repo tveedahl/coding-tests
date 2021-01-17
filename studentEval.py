@@ -12,6 +12,10 @@ class FileEmpty(StudentsDataException):
 
 class StudentEval:
 
+    def merge(dict1, dict2):
+        res = {**dict1, **dict2}
+        return res
+
     def readAndSum(self):
         try:
             global aFileName
