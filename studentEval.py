@@ -12,7 +12,7 @@ class FileEmpty(StudentsDataException):
 
 class StudentEval:
 
-    def merge(dict1, dict2):
+    def merge(self, dict1, dict2):
         res = {**dict1, **dict2}
         return res
 
@@ -24,6 +24,7 @@ class StudentEval:
             stuEvalIntl = {}
             stuEvalSummed = {}
             nameList = []
+            stuReport = []
             fileLines = fileHndl.readlines()
             count = 0
             for line in fileLines:
@@ -42,6 +43,7 @@ class StudentEval:
                 ]
                 if names not in nameList:
                     nameList.append(names)
+                    stuReport.append(stuEvalIntl)
                 else:
                     stuEvalSum = rplPoints + stuEvalIntl[count]["points"]
                     stuEvalSummed = {
@@ -51,10 +53,12 @@ class StudentEval:
                             "points": stuEvalSum
                         }
                     }
-                    for k, v in stuEvalSummed.items():
-                        print(k, v)
+                    stuReport.append(stuEvalSum)
                     count += 1
-            # print(stuEvalSummed)
+            for i in stuReport:
+                if type(i) != float:
+                    for k, v in i.items():
+                        print(v["first"], v["last"], v["points"])
         except IOError:
             print("No file by that name exists in your current directory")
 
