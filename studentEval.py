@@ -25,6 +25,7 @@ class StudentEval:
             stuEvalSummed = {}
             nameList = []
             stuReport = []
+            raise FileEmpty("File is Empty")
             fileLines = fileHndl.readlines()
             count = 0
             for line in fileLines:
