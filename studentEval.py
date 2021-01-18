@@ -47,12 +47,11 @@ class StudentEval:
                             lineSplt[1],
                         ]
                         if names not in nameList:
+                            pointsTemp = rplPoints
                             nameList.append(names)
                             stuReport.append(stuEvalIntl)
                         else:
-                            # stuEvalSum = rplPoints + stuEvalIntl[count]["points"]
-                            stuEvalSum = rplPoints + names[2]                    
-                            print(rplPoints, stuEvalSum)
+                            stuEvalSum = rplPoints + pointsTemp
                             stuEvalSummed = {
                                 count: {
                                     "first": lineSplt[0],
@@ -62,10 +61,10 @@ class StudentEval:
                             }
                             stuReport.append(stuEvalSum)
                             count += 1
-                    """for i in stuReport:
-                        if type(i) != float:
-                            for k, v in i.items():
-                                print(v["first"], v["last"], v["points"])"""
+                for i in stuReport:
+                    if type(i) != float:
+                        for k, v in i.items():
+                            print(v["first"], v["last"], v["points"])
         except IOError:
             print("No file by that name exists in your current directory")
 
