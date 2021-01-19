@@ -1,4 +1,5 @@
 import os
+from collections import Counter
 
 
 class StudentsDataException(Exception):
@@ -27,6 +28,7 @@ class StudentEval:
                 stuEvalSummed = {}
                 nameList = []
                 stuReport = []
+                repStu = []
                 fileLines = fileHndl.readlines()
                 count = 0
                 for line in fileLines:
@@ -50,6 +52,8 @@ class StudentEval:
                             pointsTemp = rplPoints
                             nameList.append(names)
                             stuReport.append(stuEvalIntl)
+                        elif names in nameList:
+                            repStu.append(stuEvalIntl)
                         else:
                             stuEvalSum = rplPoints + pointsTemp
                             stuEvalSummed = {
@@ -59,12 +63,13 @@ class StudentEval:
                                     "points": stuEvalSum
                                 }
                             }
-                            stuReport.append(stuEvalSum)
+                            stuReport.append(stuEvalSummed)
                             count += 1
                 for i in stuReport:
                     if type(i) != float:
                         for k, v in i.items():
-                            print(v["first"], v["last"], v["points"])
+                            # print(v["first"], v["last"], v["points"])
+                            pass
         except IOError:
             print("No file by that name exists in your current directory")
 
