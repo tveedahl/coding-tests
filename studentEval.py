@@ -52,8 +52,6 @@ class StudentEval:
                             pointsTemp = rplPoints
                             nameList.append(names)
                             stuReport.append(stuEvalIntl)
-                        elif names in nameList:
-                            repStu.append(stuEvalIntl)
                         else:
                             stuEvalSum = rplPoints + pointsTemp
                             stuEvalSummed = {
@@ -64,7 +62,13 @@ class StudentEval:
                                 }
                             }
                             stuReport.append(stuEvalSummed)
-                            count += 1
+                            repStu.append(stuEvalIntl)
+                            count += 1    
+                repStuCount = 0
+                while repStuCount < len(repStu):
+                    if repStuCount == 1:
+                        repStu[repStuCount] = repStu[0]
+                    repStuCount += 1
                 for i in stuReport:
                     if type(i) != float:
                         for k, v in i.items():
