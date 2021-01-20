@@ -67,7 +67,15 @@ class StudentEval:
                 repStuCount = 0
                 while repStuCount < len(repStu):
                     if repStuCount == 1:
-                        repStu[repStuCount] = repStu[0]
+                        stuUptKey = {
+                            0: {
+                                "first": repStu[1][1]["first"],
+                                "last": repStu[1][1]["last"],
+                                "points": repStu[1][1]["points"] 
+                            }
+                        }
+                        repStu.append(stuUptKey)
+                        del repStu[1]
                     repStuCount += 1
                 for i in stuReport:
                     if type(i) != float:
