@@ -51,7 +51,7 @@ class StudentEval:
                         if names not in nameList:
                             pointsTemp = rplPoints
                             nameList.append(names)
-                            if stuEvalIntl not in stuReport:
+                            if count >= len(nameList):
                                 stuReport.append(stuEvalIntl)
                         else:
                             stuEvalSum = rplPoints + pointsTemp
@@ -64,7 +64,7 @@ class StudentEval:
                             }
                             stuReport.append(stuEvalSummed)
                             count += 1
-                # print(stuReport)
+                print(stuReport)
                 """stuCount = 0
                 while stuCount < len(stuReport):
                     print(stuReport[stuCount])
