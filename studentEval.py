@@ -51,8 +51,8 @@ class StudentEval:
                         if names not in nameList:
                             pointsTemp = rplPoints
                             nameList.append(names)
-                            stuReport.append(stuEvalIntl)
-                            # repStu.append(stuEvalIntl)
+                            if stuEvalIntl not in stuReport:
+                                stuReport.append(stuEvalIntl)
                         else:
                             stuEvalSum = rplPoints + pointsTemp
                             stuEvalSummed = {
@@ -63,26 +63,16 @@ class StudentEval:
                                 }
                             }
                             stuReport.append(stuEvalSummed)
-                            # repStu.append(stuEvalIntl)
-                            count += 1    
-                repStuCount = 0
-                """while repStuCount < len(repStu):
-                    if repStuCount == 1:
-                        stuUptKey = {
-                            0: {
-                                "first": repStu[1][1]["first"],
-                                "last": repStu[1][1]["last"],
-                                "points": repStu[1][1]["points"] 
-                            }
-                        }
-                        repStu.append(stuUptKey)
-                        del repStu[1]
-                    repStuCount += 1"""
-                print(repStu)
+                            count += 1
+                # print(stuReport)
+                """stuCount = 0
+                while stuCount < len(stuReport):
+                    print(stuReport[stuCount])
+                    stuCount += 1
                 for i in stuReport:
                     if type(i) != float:
                         for k, v in i.items():
-                            print(v["first"], v["last"], v["points"])
+                            print(v["first"], v["last"], v["points"])"""
         except IOError:
             print("No file by that name exists in your current directory")
 
