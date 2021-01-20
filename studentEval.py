@@ -52,6 +52,7 @@ class StudentEval:
                             pointsTemp = rplPoints
                             nameList.append(names)
                             stuReport.append(stuEvalIntl)
+                            # repStu.append(stuEvalIntl)
                         else:
                             stuEvalSum = rplPoints + pointsTemp
                             stuEvalSummed = {
@@ -62,10 +63,10 @@ class StudentEval:
                                 }
                             }
                             stuReport.append(stuEvalSummed)
-                            repStu.append(stuEvalIntl)
+                            # repStu.append(stuEvalIntl)
                             count += 1    
                 repStuCount = 0
-                while repStuCount < len(repStu):
+                """while repStuCount < len(repStu):
                     if repStuCount == 1:
                         stuUptKey = {
                             0: {
@@ -76,12 +77,12 @@ class StudentEval:
                         }
                         repStu.append(stuUptKey)
                         del repStu[1]
-                    repStuCount += 1
+                    repStuCount += 1"""
+                print(repStu)
                 for i in stuReport:
                     if type(i) != float:
                         for k, v in i.items():
-                            # print(v["first"], v["last"], v["points"])
-                            pass
+                            print(v["first"], v["last"], v["points"])
         except IOError:
             print("No file by that name exists in your current directory")
 
