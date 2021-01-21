@@ -1,6 +1,4 @@
 import os
-from collections import Counter
-
 
 class StudentsDataException(Exception):
     pass
@@ -15,6 +13,21 @@ class FileEmpty(StudentsDataException):
 
 
 class StudentEval:
+
+    def sortReport(self, stuReport):
+        stuRepSort = []
+        for i in stuReport:
+            if type(i) != float:
+                for k, v in i.items():
+                    stuItem = {
+                        "first": v["first"],
+                        "last": v["last"], 
+                        "points": v["points"]   
+                    }
+                    stuRepSort.append(stuItem)
+                    # print(v["first"], v["last"], v["points"])
+        return stuRepSort
+
 
     def readAndSum(self):
         try:
@@ -64,14 +77,14 @@ class StudentEval:
                             }
                             stuReport.append(stuEvalSummed)
                             count += 1
-                for i in stuReport:
-                    if type(i) != float:
-                        for k, v in i.items():
-                            print(v["first"], v["last"], v["points"])
+            stuRepSort = self.sortReport(stuReport)
+            return stuRepSort        
         except IOError:
             print("No file by that name exists in your current directory")
 
 
 impStudentEval = StudentEval()
 
-impStudentEval.readAndSum()
+stuRepSort = impStudentEval.readAndSum()
+
+print(stuRepSort)
