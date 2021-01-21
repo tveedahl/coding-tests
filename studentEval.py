@@ -27,6 +27,9 @@ class StudentEval:
                     stuRepSort.append(stuItem)    
         return sorted(stuRepSort, key = lambda i: i['first'])
 
+    def printStuRep(self, stuRepSort):
+        for i in stuRepSort:
+            print(i["first"], i["last"], i["points"])
 
     def readAndSum(self):
         try:
@@ -77,13 +80,11 @@ class StudentEval:
                             stuReport.append(stuEvalSummed)
                             count += 1
             stuRepSort = self.sortReport(stuReport)
-            return stuRepSort        
+            self.printStuRep(stuRepSort)        
         except IOError:
             print("No file by that name exists in your current directory")
 
 
 impStudentEval = StudentEval()
 
-stuRepSort = impStudentEval.readAndSum()
-
-print(stuRepSort)
+impStudentEval.readAndSum()
