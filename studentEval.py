@@ -43,7 +43,6 @@ class StudentEval:
                 stuEvalSummed = {}
                 nameList = []
                 stuReport = []
-                repStu = []
                 fileLines = fileHndl.readlines()
                 count = 0
                 for line in fileLines:
