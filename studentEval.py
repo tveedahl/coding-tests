@@ -24,9 +24,8 @@ class StudentEval:
                         "last": v["last"], 
                         "points": v["points"]   
                     }
-                    stuRepSort.append(stuItem)
-                    # print(v["first"], v["last"], v["points"])
-        return stuRepSort
+                    stuRepSort.append(stuItem)    
+        return sorted(stuRepSort, key = lambda i: i['first'])
 
 
     def readAndSum(self):
